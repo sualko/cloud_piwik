@@ -2,7 +2,7 @@
 Track owncloud users with [Piwik](https://piwik.org).
 
 ## Requirements
-- Working piwik installation (tested with 2.14.3) reachable via <code>http(s)://OWNCLOUD_URL/piwik/</code>
+- Working piwik installation (tested with 2.14.3)
 - Empty custom variable slots on index 1 and 2
 
 ## What will be tracked?
