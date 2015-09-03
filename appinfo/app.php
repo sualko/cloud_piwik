@@ -10,7 +10,14 @@
   * @license MIT
   */
 
-OCP\Util::addScript ( 'piwik', 'piwik' );
+OCP\App::registerAdmin ( 'piwik', 'settings-admin' );
+
+$internal = OCP\Config::getAppValue ( 'piwik', 'internal' );
+
+if ($internal === 'yes') {
+   OCP\Util::addScript ( 'piwik', 'piwik');
+}
+
 OCP\Util::addScript ( 'piwik', 'track' );
 
 ?>
