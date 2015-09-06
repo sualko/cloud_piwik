@@ -1,0 +1,26 @@
+{
+  "name": "owncloud_piwik",
+  "version": "0.1.0",
+  "description": "Track owncloud users with piwik",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sualko/owncloud_piwik.git"
+  },
+  "keywords": [
+    "owncloud",
+    "piwik",
+    "tracking"
+  ],
+  "author": "Klaus Herberth <klaus@jsxc.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sualko/owncloud_piwik/issues"
+  },
+  "homepage": "https://github.com/sualko/owncloud_piwik",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-jsbeautifier": "^0.2.10"
+  }
+}
