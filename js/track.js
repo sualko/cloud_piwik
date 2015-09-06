@@ -14,12 +14,16 @@ var _paq = _paq || [];
    "use strict";
    
    var piwik = (typeof localStorage !== 'undefined') ? OC.localStorage.getItem('piwik') : null;
-   
+ 
    if (piwik && (piwik.validUntil || 0) >  (new Date()).getTime() / 1000 && !oc_debug) {
       track(piwik.siteId, piwik.url);
    } else {
-      OC.AppConfig.getValue('piwik', 'piwik', {}, function(piwik) {
-         piwik = JSON.parse(piwik);
+      $.ajax({
+         url: OC.filePath('piwik', 'ajax', 'getPiwikSettings.php'),
+      })
+      .done(function(data) {
+         data = data || {};
+	 piwik = JSON.parse(data.data) || {};
          
          if (piwik.siteId && piwik.url) {
             piwik.validUntil = (new Date()).getTime() + (piwik.validity * 1000);
@@ -34,7 +38,7 @@ var _paq = _paq || [];
    function track(siteId, url) {
       var app = null;
       var path = window.location.pathname;
-      var pathparts = path.match(/index\.php\/apps\/([a-z0-9]+)\/?/i) || path.match(/index\.php\/([a-z0-9]+)(\/([a-z0-9]+))?/i);
+      var pathparts = path.match(/index\.php\/apps\/([a-z0-9]+)\/?/i) || path.match(/index\.php\/([a-z0-9]+)(\/([a-z0-9]+))?/i) || [];
 
       if(pathparts.length >= 2) {
          app = pathparts[1];

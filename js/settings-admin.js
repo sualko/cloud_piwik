@@ -10,13 +10,13 @@
 
 $(function() {
    OC.AppConfig.getValue('piwik', 'piwik', {}, function(piwik){ 
-      piwik = JSON.parse(piwik);
+      piwik = JSON.parse(piwik) || {};
       
       $('#piwikSiteId').val(piwik.siteId);
       $('#piwikUrl').val(piwik.url);
-      
-      $('#piwikUrl').attr('placeholder', 'e.g. //' + window.location.host + '/piwik/');
    });
+
+      $('#piwikUrl').attr('placeholder', 'e.g. //' + window.location.host + '/piwik/');
    
 	$('#piwikSettings input[type="text"]').change(function() {
       var piwik = {}, value;
