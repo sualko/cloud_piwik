@@ -1,7 +1,8 @@
 # owncloud_piwik
-Track owncloud users with [Piwik](https://piwik.org).
+Track [owncloud](https://owncloud.org) users with [Piwik](https://piwik.org).
 
 ## Requirements
+- Owncloud >= 8
 - Working piwik installation (tested with 2.14.3)
 - Empty custom variable slots on index 1 and 2
 
@@ -15,3 +16,9 @@ Track owncloud users with [Piwik](https://piwik.org).
 - Download
 - Outlink
 - File directory
+
+## Installation
+- Download and extract to <code>OWNCLOUD_DIR/apps/</code>
+- Enable app
+- If needed create a new site in your piwik installation
+- Insert piwik site id and url on the owncloud admin page (e.g. site id: <code>1</code>, url: <code>//domain.tld/piwik/</code>)
