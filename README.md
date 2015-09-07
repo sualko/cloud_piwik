@@ -18,7 +18,7 @@ Track [owncloud](https://owncloud.org) users with [Piwik](https://piwik.org).
 - File directory
 
 ## Installation
-- Download and extract to <code>OWNCLOUD_DIR/apps/</code>
+- Download and extract to <code>OWNCLOUD_DIR/apps/piwik/</code>
 - Enable app
 - If needed create a new site in your piwik installation
 - Insert piwik site id and url on the owncloud admin page (e.g. site id: <code>1</code>, url: <code>//domain.tld/piwik/</code>)
