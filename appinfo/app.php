@@ -12,7 +12,7 @@
 
 OCP\App::registerAdmin ( 'piwik', 'settings-admin' );
 
-$internal = OCP\Config::getAppValue ( 'piwik', 'internal','no' );
+$internal = OCP\Config::getAppValue ( 'piwik', 'internal','' );
 
 if ($internal === 'yes') {
    OCP\Util::addScript ( 'piwik', 'piwik');
