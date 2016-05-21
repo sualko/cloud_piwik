@@ -18,6 +18,16 @@ if ($internal === 'yes') {
    OCP\Util::addScript ( 'piwik', 'piwik');
 }
 
+$piwik = json_decode(OCP\Config::getAppValue ( 'piwik', 'piwik' ));
+$url = parse_url($piwik->url,PHP_URL_HOST);
+
+if($_SERVER['HTTP_HOST'] !== $url) {
+   $policy = new OCP\AppFramework\Http\ContentSecurityPolicy ();
+   $policy->addAllowedScriptDomain($url);
+   $policy->addAllowedImageDomain($url);
+   \OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy);
+}
+
 OCP\Util::addScript ( 'piwik', 'track' );
 
 ?>
