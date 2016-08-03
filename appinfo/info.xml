@@ -7,4 +7,16 @@
 	<licence>MIT</licence>
 	<author>Klaus Herberth</author>
 	<requiremin>8</requiremin>
+	<category>other</category>
+	<oscid>171304</oscid>
+	
+	<website>http://sualko.github.io/owncloud_piwik/</website>
+	<bugs>https://github.com/sualko/owncloud_piwik/issues</bugs>
+	<repository type="git">https://github.com/sualko/owncloud_piwik.git</repository>
+	
+	<dependencies>
+		<owncloud min-version="8" max-version="9"/>
+	</dependencies>
 </info>
+
+
