@@ -38,6 +38,15 @@ var _paq = _paq || [];
          if (app === 's') {
             app = 'share';
 
+            var sharevalue = $('input[name="filename"]').val();
+
+            if(sharevalue) {
+				       sharevalue = pathparts[3] + ' (' + sharevalue + ')';
+		           _paq.push(['setCustomVariable', '3', 'ShareNodes', sharevalue, 'page']);
+      			} else {
+      			   sharevalue = pathparts[3];
+      			}
+
             _paq.push(['setCustomVariable', '2', 'Shares', pathparts[3], 'page']);
          }
 
