@@ -15,7 +15,8 @@
 	<repository type="git">https://github.com/sualko/owncloud_piwik.git</repository>
 	
 	<dependencies>
-		<owncloud min-version="8" max-version="11"/>
+		<owncloud min-version="8.0" max-version="9"/>
+      		<nextcloud min-version="8.0" max-version="11"/>
 	</dependencies>
 </info>
 
