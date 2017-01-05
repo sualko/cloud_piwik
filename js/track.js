@@ -5,7 +5,7 @@ var _paq = _paq || [];
 (function() {
    "use strict";
 
-   var piwik = (typeof localStorage !== 'undefined') ? OC.localStorage.getItem('piwik') : null;
+   var piwik = (typeof localStorage !== 'undefined') ? localStorage.getItem('piwik') : null;
 
    if (piwik && (piwik.validUntil || 0) > (new Date()).getTime() / 1000 && !oc_debug) {
       track(piwik.siteId, piwik.url);
@@ -20,7 +20,7 @@ var _paq = _paq || [];
             if (piwik.siteId && piwik.url) {
                piwik.validUntil = (new Date()).getTime() + (piwik.validity * 1000);
 
-               OC.localStorage.setItem('piwik', piwik);
+               localStorage.setItem('piwik', piwik);
 
                track(piwik.siteId, piwik.url);
             }
