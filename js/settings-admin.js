@@ -2,7 +2,12 @@
 
 $(function() {
    OC.AppConfig.getValue('piwik', 'piwik', {}, function(piwik) {
-      piwik = JSON.parse(piwik) || {};
+      if (piwik) {
+        try {
+          piwik = JSON.parse(piwik);
+        } catch(err) {}
+      }
+      piwik = piwik || {};
 
       $('#piwikSiteId').val(piwik.siteId);
       $('#piwikUrl').val(piwik.url);
