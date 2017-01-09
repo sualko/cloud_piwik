@@ -8,8 +8,10 @@ var _paq = _paq || [];
    var piwik = (typeof localStorage !== 'undefined') ? localStorage.getItem('piwik') : null;
 
    if (piwik && (piwik.validUntil || 0) > (new Date()).getTime() / 1000 && !oc_debug) {
-      track(piwik.siteId, piwik.url);
+      // use cached options
+      track(piwik);
    } else {
+      // load options
       $.ajax({
             url: OC.filePath('piwik', 'ajax', 'getPiwikSettings.php'),
          })
@@ -22,12 +24,12 @@ var _paq = _paq || [];
 
                localStorage.setItem('piwik', piwik);
 
-               track(piwik.siteId, piwik.url);
+               track(piwik);
             }
          });
    }
 
-   function track(siteId, url) {
+   function track(options) {
       var app = null;
       var path = window.location.pathname;
       var pathparts = path.match(/index\.php\/apps\/([a-z0-9]+)\/?/i) || path.match(/index\.php\/([a-z0-9]+)(\/([a-z0-9]+))?/i) || [];
@@ -36,45 +38,62 @@ var _paq = _paq || [];
          app = pathparts[1];
 
          if (app === 's') {
+            // rewrite app name
             app = 'share';
 
             var sharevalue = $('input[name="filename"]').val();
 
             if(sharevalue) {
 				       sharevalue = pathparts[3] + ' (' + sharevalue + ')';
+
+               // save share id + share name in slot 3
 		           _paq.push(['setCustomVariable', '3', 'ShareNodes', sharevalue, 'page']);
       			} else {
       			   sharevalue = pathparts[3];
       			}
 
+            // save share id in slot 2
             _paq.push(['setCustomVariable', '2', 'Shares', pathparts[3], 'page']);
          }
 
+         // save app name in slot 1
          _paq.push(['setCustomVariable', '1', 'App', app, 'page']);
       }
 
       if (OC && OC.currentUser) {
+         // set user id
          _paq.push(['setUserId', OC.currentUser]);
       }
 
-      //_paq.push(['setDownloadClasses', ['action-download', 'piwik_download']]);
-      // _paq.push(['enableLinkTracking']);
+      if (options.trackDir === 'on') {
+        // track file browsing
 
-      _paq.push(['setTrackerUrl', url + 'piwik.php']);
-      _paq.push(['setSiteId', siteId]);
+        $('#app-content').delegate('>div', 'afterChangeDirectory', function(){
+          // update title and url for next page view
+          _paq.push(['setDocumentTitle', document.title]);
+          _paq.push(['setCustomUrl', window.location.href]);
+          _paq.push(['trackPageView']);
+        });
+      }
 
-      $(function() {
-         _paq.push(['trackPageView']);
-      });
+      // set piwik options
+      _paq.push(['setTrackerUrl', options.url + 'piwik.php']);
+      _paq.push(['setSiteId', options.siteId]);
+
+      if (app !== 'files' || options.trackDir !== 'on') {
+        // track page view
+        _paq.push(['trackPageView']);
+      }
 
       if (typeof Piwik === 'undefined') {
+         // load piwik library
          var d = document,
             g = d.createElement('script'),
             s = d.getElementsByTagName('script')[0];
          g.type = 'text/javascript';
          g.async = true;
          g.defer = true;
-         g.src = url + 'piwik.js';
+         g.src = options.url + 'piwik.js';
          s.parentNode.insertBefore(g, s);
       }
    }

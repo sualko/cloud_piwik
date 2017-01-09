@@ -1,39 +1,55 @@
-/* global OC */
+/* global OCP, OC */
 
 $(function() {
-   OC.AppConfig.getValue('piwik', 'piwik', {}, function(piwik) {
-      if (piwik) {
+   function setValue(data) {
+      if (data) {
         try {
-          piwik = JSON.parse(piwik);
+          data = JSON.parse(data);
         } catch(err) {}
       }
-      piwik = piwik || {};
+      data = data || {};
 
-      $('#piwikSiteId').val(piwik.siteId);
-      $('#piwikUrl').val(piwik.url);
-   });
+      var form = $('#piwikSettings form');
+
+      $.each(data, function(name, val) {
+        var el = form.find('[name=' + name + ']');
+
+        if (el.attr('type') === 'checkbox') {
+          el.prop('checked', val === 'yes' || val === 'on');
+        } else {
+          el.val(val);
+        }
+      });
+   }
+
+   if (typeof OCP !== 'undefined') {
+     OCP.AppConfig.getValue('piwik', 'piwik', {}, {
+       success: function(result) {
+         setValue($(result).find('data data').text());
+       }
+     });
+   } else {
+     OC.AppConfig.getValue('piwik', 'piwik', {}, setValue);
+   }
 
    $('#piwikUrl').attr('placeholder', 'e.g. //' + window.location.host + '/piwik/');
 
-   $('#piwikSettings input[type="text"]').change(function() {
-      var piwik = {};
+   $('#piwikSettings input').change(function() {
+      var formData = $('#piwikSettings form').serializeArray();
+      var data = {};
 
-      piwik.siteId = $('#piwikSiteId').val();
-      piwik.url = $('#piwikUrl').val();
-      piwik.validity = 60 * 60 * 24;
+      $.each(formData, function(index, obj){
+          data[obj.name] = obj.value;
+      });
 
-      if (!piwik.url.match(/\/$/)) {
-         piwik.url += '/';
+      if (!data.url.match(/\/$/)) {
+         data.url += '/';
       }
 
-      OC.AppConfig.setValue('piwik', 'piwik', JSON.stringify(piwik));
-   });
-
-   OC.AppConfig.getValue('piwik', 'internal', false, function(internal) {
-      $('#piwikInternal').prop('checked', internal === 'yes');
-   });
-
-   $('#piwikInternal').change(function() {
-      OC.AppConfig.setValue('piwik', 'internal', $('#piwikInternal').prop('checked') ? 'yes' : 'no');
+      if (typeof OCP !== 'undefined') {
+        OCP.AppConfig.setValue('piwik', 'piwik', JSON.stringify(data));
+      } else {
+        OC.AppConfig.setValue('piwik', 'piwik', JSON.stringify(data));
+      }
    });
 });

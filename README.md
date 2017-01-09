@@ -16,7 +16,6 @@ Track [owncloud](https://owncloud.org) users with [Piwik](https://piwik.org).
 ## What will not be tracked?
 - Download
 - Outlink
-- File directory
 
 ## Installation
 - Download and extract to <code>OWNCLOUD_DIR/apps/piwik/</code>
