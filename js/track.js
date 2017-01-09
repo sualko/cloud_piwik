@@ -43,14 +43,14 @@ var _paq = _paq || [];
 
             var sharevalue = $('input[name="filename"]').val();
 
-            if(sharevalue) {
-				       sharevalue = pathparts[3] + ' (' + sharevalue + ')';
+            if (sharevalue) {
+               sharevalue = pathparts[3] + ' (' + sharevalue + ')';
 
                // save share id + share name in slot 3
-		           _paq.push(['setCustomVariable', '3', 'ShareNodes', sharevalue, 'page']);
-      			} else {
-      			   sharevalue = pathparts[3];
-      			}
+               _paq.push(['setCustomVariable', '3', 'ShareNodes', sharevalue, 'page']);
+            } else {
+               sharevalue = pathparts[3];
+            }
 
             // save share id in slot 2
             _paq.push(['setCustomVariable', '2', 'Shares', pathparts[3], 'page']);
@@ -66,14 +66,14 @@ var _paq = _paq || [];
       }
 
       if (options.trackDir === 'on') {
-        // track file browsing
+         // track file browsing
 
-        $('#app-content').delegate('>div', 'afterChangeDirectory', function(){
-          // update title and url for next page view
-          _paq.push(['setDocumentTitle', document.title]);
-          _paq.push(['setCustomUrl', window.location.href]);
-          _paq.push(['trackPageView']);
-        });
+         $('#app-content').delegate('>div', 'afterChangeDirectory', function() {
+            // update title and url for next page view
+            _paq.push(['setDocumentTitle', document.title]);
+            _paq.push(['setCustomUrl', window.location.href]);
+            _paq.push(['trackPageView']);
+         });
       }
 
       // set piwik options
@@ -81,8 +81,8 @@ var _paq = _paq || [];
       _paq.push(['setSiteId', options.siteId]);
 
       if (app !== 'files' || options.trackDir !== 'on') {
-        // track page view
-        _paq.push(['trackPageView']);
+         // track page view
+         _paq.push(['trackPageView']);
       }
 
       if (typeof Piwik === 'undefined') {
