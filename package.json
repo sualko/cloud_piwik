@@ -1,6 +1,6 @@
 {
   "name": "owncloud_piwik",
-  "version": "0.2.0-beta",
+  "version": "0.2.0",
   "description": "Track owncloud/nextcloud users with piwik",
   "repository": {
     "type": "git",
