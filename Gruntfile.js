@@ -100,5 +100,5 @@ module.exports = function(grunt) {
    grunt.registerTask('default', ['jshint', 'jsbeautifier']);
 
    grunt.registerTask('build', ['jshint', 'jsbeautifier', 'clean', 'copy', 'usebanner']);
-   grunt.registerTask('build:release', ['build', 'uglify', 'compress']);
+   grunt.registerTask('build:release', ['build', 'replace', 'uglify', 'compress']);
 };
