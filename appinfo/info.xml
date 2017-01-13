@@ -3,7 +3,7 @@
 	<id>piwik</id>
 	<name>Piwik Tracking</name>
 	<description>Track users with piwik</description>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 	<licence>MIT</licence>
 	<author>Klaus Herberth</author>
 	<requiremin>8</requiremin>
