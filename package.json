@@ -1,12 +1,13 @@
 {
   "name": "owncloud_piwik",
   "version": "0.2.0-beta",
-  "description": "Track owncloud users with piwik",
+  "description": "Track owncloud/nextcloud users with piwik",
   "repository": {
     "type": "git",
     "url": "https://github.com/sualko/owncloud_piwik.git"
   },
   "keywords": [
+    "nextcloud",
     "owncloud",
     "piwik",
     "tracking"
