@@ -76,7 +76,8 @@ module.exports = function(grunt) {
       compress: {
          main: {
             options: {
-               archive: "archives/owncloud_piwik-<%= meta.app.version %>.zip"
+               archive: "archives/owncloud_piwik-<%= meta.app.version %>.tar.gz",
+               mode: 'tgz'
             },
             files: [{
                src: ['**'],
@@ -84,6 +85,14 @@ module.exports = function(grunt) {
                dest: 'piwik/',
                cwd: 'build/'
             }]
+         }
+      },
+      exec: {
+         signRelease: {
+            command: 'openssl dgst -sha512 -sign ' +
+               '~/.nextcloud/certificates/piwik.key ' +
+               'archives/owncloud_piwik-<%= meta.app.version %>.tar.gz | openssl base64 > ' +
+               'archives/owncloud_piwik-<%= meta.app.version %>.tar.gz.ncsig'
          }
       }
    });
@@ -96,9 +105,12 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-jsbeautifier');
    grunt.loadNpmTasks('grunt-banner');
    grunt.loadNpmTasks('grunt-text-replace');
+   grunt.loadNpmTasks('grunt-exec');
 
    grunt.registerTask('default', ['jshint', 'jsbeautifier']);
 
    grunt.registerTask('build', ['jshint', 'jsbeautifier', 'clean', 'copy', 'usebanner']);
    grunt.registerTask('build:release', ['build', 'replace', 'uglify', 'compress']);
+
+   grunt.registerTask('sign:release', ['exec:signRelease']);
 };
