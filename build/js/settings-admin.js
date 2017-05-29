@@ -1,5 +1,5 @@
 /*!
- * owncloud_piwik v0.2.0 - 2017-01-13
+ * owncloud_piwik v0.3.0 - 2017-05-29
  * 
  * Copyright (c) 2017 Klaus Herberth <klaus@jsxc.org> <br>
  * Released under the MIT license
@@ -7,7 +7,7 @@
  * Please see https://github.com/sualko/owncloud_piwik
  * 
  * @author Klaus Herberth <klaus@jsxc.org>
- * @version 0.2.0
+ * @version 0.3.0
  * @license MIT
  */
 

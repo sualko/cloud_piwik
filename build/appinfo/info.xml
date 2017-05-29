@@ -4,7 +4,7 @@
 	<name>Piwik Tracking</name>
 	<summary>Track users with piwik</summary>
 	<description>Track users with piwik</description>
-	<version>0.2.0</version>
+	<version>0.3.0</version>
 	<licence>agpl</licence>
 	<author>Klaus Herberth</author>
 	<category>tools</category>
@@ -14,8 +14,8 @@
 	<repository type="git">https://github.com/sualko/owncloud_piwik.git</repository>
 
 	<dependencies>
-		<owncloud min-version="8.0" max-version="9"/>
-		<nextcloud min-version="8.0" max-version="11"/>
+		<owncloud min-version="8.0" max-version="10"/>
+		<nextcloud min-version="8.0" max-version="12"/>
 	</dependencies>
 
 	<ocsid>171304</ocsid>
