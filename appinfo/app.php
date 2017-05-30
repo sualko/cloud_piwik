@@ -16,12 +16,16 @@ if(class_exists('\\OCP\\AppFramework\\Http\\ContentSecurityPolicy')) {
    $piwik = json_decode(OCP\Config::getAppValue('piwik', 'piwik'));
    $url = parse_url($piwik->url, PHP_URL_HOST);
 
-   if (array_key_exists('HTTP_HOST', $_SERVER) && $_SERVER['HTTP_HOST'] !== $url) {
-      $policy = new OCP\AppFramework\Http\ContentSecurityPolicy ();
+   $policy = new OCP\AppFramework\Http\ContentSecurityPolicy ();
+   $policy->addAllowedScriptDomain('\'self\'');
+   $policy->addAllowedImageDomain('\'self\'');
+
+   if ($url !== false && array_key_exists('HTTP_HOST', $_SERVER) && $_SERVER['HTTP_HOST'] !== $url) {
       $policy->addAllowedScriptDomain($url);
       $policy->addAllowedImageDomain($url);
-      \OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy);
    }
+
+   \OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy);
 }
 OCP\Util::addScript ( 'piwik', 'track' );
 
