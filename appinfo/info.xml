@@ -9,9 +9,9 @@
 	<author>Klaus Herberth</author>
 	<category>tools</category>
 
-	<website>http://sualko.github.io/owncloud_piwik/</website>
-	<bugs>https://github.com/sualko/owncloud_piwik/issues</bugs>
-	<repository type="git">https://github.com/sualko/owncloud_piwik.git</repository>
+	<website>http://sualko.github.io/cloud_piwik/</website>
+	<bugs>https://github.com/sualko/cloud_piwik/issues</bugs>
+	<repository type="git">https://github.com/sualko/cloud_piwik.git</repository>
 
 	<dependencies>
 		<owncloud min-version="9.0" max-version="10"/>
