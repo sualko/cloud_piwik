@@ -18,8 +18,8 @@ if(class_exists('\\OCP\\AppFramework\\Http\\ContentSecurityPolicy') && $piwik !=
    $url = parse_url($piwik->url, PHP_URL_HOST);
 
    $policy = new OCP\AppFramework\Http\ContentSecurityPolicy ();
-   $policy->addAllowedScriptDomain('\'self\'');
-   $policy->addAllowedImageDomain('\'self\'');
+   $policy->addAllowedScriptDomain('\'self\' ');
+   $policy->addAllowedImageDomain('\'self\' ');
 
    if ($url !== false && array_key_exists('HTTP_HOST', $_SERVER) && $_SERVER['HTTP_HOST'] !== $url) {
       $policy->addAllowedScriptDomain($url);
