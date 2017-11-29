@@ -12,13 +12,14 @@
 
 OCP\App::registerAdmin ( 'piwik', 'settings-admin' );
 
-if(class_exists('\\OCP\\AppFramework\\Http\\ContentSecurityPolicy')) {
-   $piwik = json_decode(OCP\Config::getAppValue('piwik', 'piwik'));
+$piwik = json_decode(OCP\Config::getAppValue('piwik', 'piwik'));
+
+if(class_exists('\\OCP\\AppFramework\\Http\\ContentSecurityPolicy') && $piwik !== null) {
    $url = parse_url($piwik->url, PHP_URL_HOST);
 
    $policy = new OCP\AppFramework\Http\ContentSecurityPolicy ();
-   $policy->addAllowedScriptDomain('\'self\'');
-   $policy->addAllowedImageDomain('\'self\'');
+   $policy->addAllowedScriptDomain('\'self\' ');
+   $policy->addAllowedImageDomain('\'self\' ');
 
    if ($url !== false && array_key_exists('HTTP_HOST', $_SERVER) && $_SERVER['HTTP_HOST'] !== $url) {
       $policy->addAllowedScriptDomain($url);

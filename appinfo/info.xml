@@ -4,7 +4,7 @@
 	<name>Piwik Tracking</name>
 	<summary>Track users with piwik</summary>
 	<description>Track users with piwik</description>
-	<version>0.3.1</version>
+	<version>0.3.2</version>
 	<licence>agpl</licence>
 	<author>Klaus Herberth</author>
 	<category>tools</category>

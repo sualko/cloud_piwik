@@ -4,18 +4,18 @@
 	<name>Piwik Tracking</name>
 	<summary>Track users with piwik</summary>
 	<description>Track users with piwik</description>
-	<version>0.3.1</version>
+	<version>0.3.2</version>
 	<licence>agpl</licence>
 	<author>Klaus Herberth</author>
 	<category>tools</category>
 
-	<website>http://sualko.github.io/owncloud_piwik/</website>
-	<bugs>https://github.com/sualko/owncloud_piwik/issues</bugs>
-	<repository type="git">https://github.com/sualko/owncloud_piwik.git</repository>
+	<website>http://sualko.github.io/cloud_piwik/</website>
+	<bugs>https://github.com/sualko/cloud_piwik/issues</bugs>
+	<repository type="git">https://github.com/sualko/cloud_piwik.git</repository>
 
 	<dependencies>
-		<owncloud min-version="8.0" max-version="10"/>
-		<nextcloud min-version="8.0" max-version="12"/>
+		<owncloud min-version="9.0" max-version="10"/>
+		<nextcloud min-version="10.0" max-version="13"/>
 	</dependencies>
 
 	<ocsid>171304</ocsid>
