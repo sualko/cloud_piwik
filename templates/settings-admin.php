@@ -9,7 +9,7 @@
 			</tr>
 			<tr>
 				<td><label for="piwikUrl">Piwik Url </label></td>
-				<td><input type="text" name="url" id="piwikUrl" /></td>
+				<td><input type="url" name="url" id="piwikUrl" /></td>
 				<td></td>
 			</tr>
 			<tr>
