@@ -16,7 +16,7 @@ style('piwik', 'settings');
 			</tr>
 			<tr>
 				<td><label for="piwikUrl">Piwik/Matomo Url </label></td>
-				<td><input type="text" name="url" id="piwikUrl" value="<?php p($_['url']);?>" /></td>
+				<td><input type="url" name="url" id="piwikUrl" value="<?php p($_['url']);?>" /></td>
 			</tr>
 			<tr>
 				<td colspan="2">
