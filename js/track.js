@@ -5,26 +5,34 @@ var _paq = _paq || [];
 (function() {
    "use strict";
 
-   var piwik = (typeof localStorage !== 'undefined') ? localStorage.getItem('piwik') : null;
+   var piwik;
 
-   if (piwik && (piwik.validUntil || 0) > (new Date()).getTime() / 1000 && !oc_debug) {
+   if (typeof localStorage !== 'undefined') {
+      var piwikString = localStorage.getItem('piwik');
+
+      try {
+         piwik = JSON.parse(piwikString);
+      } catch (err) {}
+   }
+
+   if (piwik && (piwik.validUntil || 0) > (new Date()).getTime() && !oc_debug) {
       // use cached options
       track(piwik);
    } else {
       // load options
       $.ajax({
-            url: OC.filePath('piwik', 'ajax', 'getPiwikSettings.php'),
+            method: 'GET',
+            url: OC.generateUrl('apps/piwik/settings'),
          })
-         .done(function(data) {
-            data = data || {};
-            piwik = JSON.parse(data.data) || {};
+         .done(function(response) {
+            var data = response ? response.data : {};
 
-            if (piwik.siteId && piwik.url) {
-               piwik.validUntil = (new Date()).getTime() + (piwik.validity * 1000);
+            if (data.siteId && data.url) {
+               data.validUntil = (new Date()).getTime() + (data.validity * 1000);
 
-               localStorage.setItem('piwik', piwik);
+               localStorage.setItem('piwik', JSON.stringify(data));
 
-               track(piwik);
+               track(data);
             }
          });
    }

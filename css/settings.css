@@ -1,0 +1,23 @@
+#piwikSettings table {
+    width: 400px;
+    max-width: 100%;
+}
+#piwikSettings td {
+    width: 50%;
+}
+
+#piwikSettings input[type="text"], #piwikSettings input[type="number"] {
+    width: 100%;
+}
+
+#piwikSettings input {
+    transition: background-color 0.5s;
+}
+
+#piwikSettings input.piwik-success {
+    background-color: #4eb387;
+}
+
+#piwikSettings input.piwik-error {
+    background-color: #f65c38;
+}
