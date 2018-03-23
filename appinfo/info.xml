@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <info>
 	<id>piwik</id>
-	<name>Piwik Tracking</name>
-	<summary>Track users with piwik</summary>
-	<description>Track users with piwik</description>
+	<name>Piwik/Matomo Tracking</name>
+	<summary>Track users with Piwik/Matomo</summary>
+	<description>Track users with Piwik/Matomo</description>
 	<version>0.4.0-alpha</version>
 	<licence>agpl</licence>
 	<author>Klaus Herberth</author>

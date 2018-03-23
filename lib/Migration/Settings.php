@@ -23,7 +23,7 @@ class Settings implements IRepairStep
      */
     public function getName()
     {
-        return 'Update Piwik settings format';
+        return 'Update Piwik/Matomo settings format';
     }
 
     /**
