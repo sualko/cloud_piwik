@@ -26,7 +26,7 @@ module.exports = function(grunt) {
          main: {
             files: [{
                expand: true,
-               src: ['ajax/**', 'appinfo/**', 'js/**', 'templates/**', 'img/**', 'settings-admin.php', 'LICENSE'],
+               src: ['appinfo/**', 'css/**', 'js/**', 'templates/**', 'img/**', 'lib/**', 'LICENSE'],
                dest: 'build/'
             }]
          }
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
                preserveComments: 'some'
             },
             files: {
-               'build/js/settings-admin.min.js': ['js/settings-admin.js'],
+               'build/js/settings/admin.min.js': ['js/settings/admin.js'],
                'build/js/track.min.js': ['js/track.js']
             }
          }

@@ -1,33 +1,22 @@
 <?php
+$url = \OC::$server->getConfig()->getAppValue('piwik', 'url');
 
- /**
-  * owncloud_piwik
-  *
-  * Copyright (c) 2015 Klaus Herberth <klaus@jsxc.org> <br>
-  * Released under the MIT license
-  *
-  * @author Klaus Herberth <klaus@jsxc.org>
-  * @license MIT
-  */
+if (!empty($url)) {
+    OCP\Util::addScript('piwik', 'track');
 
-OCP\App::registerAdmin ( 'piwik', 'settings-admin' );
+    if (class_exists('\\OCP\\AppFramework\\Http\\ContentSecurityPolicy')) {
+        $url = parse_url($url, PHP_URL_HOST);
 
-$piwik = json_decode(OCP\Config::getAppValue('piwik', 'piwik'));
+        $policy = new OCP\AppFramework\Http\ContentSecurityPolicy();
+        $policy->addAllowedScriptDomain('\'self\' ');
+        $policy->addAllowedImageDomain('\'self\' ');
 
-if(class_exists('\\OCP\\AppFramework\\Http\\ContentSecurityPolicy') && $piwik !== null) {
-   $url = parse_url($piwik->url, PHP_URL_HOST);
+        if ($url !== false && array_key_exists('HTTP_HOST', $_SERVER)
+            && $_SERVER['HTTP_HOST'] !== $url && !empty($url)) {
+            $policy->addAllowedScriptDomain($url);
+            $policy->addAllowedImageDomain($url);
+        }
 
-   $policy = new OCP\AppFramework\Http\ContentSecurityPolicy ();
-   $policy->addAllowedScriptDomain('\'self\' ');
-   $policy->addAllowedImageDomain('\'self\' ');
-
-   if ($url !== false && array_key_exists('HTTP_HOST', $_SERVER) && $_SERVER['HTTP_HOST'] !== $url) {
-      $policy->addAllowedScriptDomain($url);
-      $policy->addAllowedImageDomain($url);
-   }
-
-   \OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy);
+        \OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy);
+    }
 }
-OCP\Util::addScript ( 'piwik', 'track' );
-
-?>
