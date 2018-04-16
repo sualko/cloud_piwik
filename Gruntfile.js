@@ -76,7 +76,7 @@ module.exports = function(grunt) {
       compress: {
          main: {
             options: {
-               archive: "archives/owncloud_piwik-<%= meta.app.version %>.tar.gz",
+               archive: "archives/cloud_piwik-<%= meta.app.version %>.tar.gz",
                mode: 'tgz'
             },
             files: [{
@@ -91,8 +91,8 @@ module.exports = function(grunt) {
          signRelease: {
             command: 'openssl dgst -sha512 -sign ' +
                '~/.nextcloud/certificates/piwik.key ' +
-               'archives/owncloud_piwik-<%= meta.app.version %>.tar.gz | openssl base64 > ' +
-               'archives/owncloud_piwik-<%= meta.app.version %>.tar.gz.ncsig'
+               'archives/cloud_piwik-<%= meta.app.version %>.tar.gz | openssl base64 > ' +
+               'archives/cloud_piwik-<%= meta.app.version %>.tar.gz.ncsig'
          }
       }
    });
