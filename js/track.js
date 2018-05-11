@@ -73,7 +73,7 @@ var _paq = _paq || [];
          _paq.push(['setUserId', OC.currentUser]);
       }
 
-      if (options.trackDir === 'on') {
+      if (options.trackDir === 'on' || options.trackDir === true) {
          // track file browsing
 
          $('#app-content').delegate('>div', 'afterChangeDirectory', function() {
