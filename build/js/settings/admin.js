@@ -2,6 +2,10 @@
 
 $(function() {
    function showRequestResult(element, result) {
+      if (element.attr('type') === 'checkbox') {
+         element = $('label[for="' + element.attr('id') + '"]');
+      }
+
       element.removeClass('piwik-success piwik-error');
       element.addClass('piwik-' + result);
 

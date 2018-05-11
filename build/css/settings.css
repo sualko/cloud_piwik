@@ -10,14 +10,14 @@
     width: 100%;
 }
 
-#piwikSettings input {
+#piwikSettings input, #piwikSettings label {
     transition: background-color 0.5s;
 }
 
-#piwikSettings input.piwik-success {
+#piwikSettings input.piwik-success, #piwikSettings label.piwik-success {
     background-color: #4eb387;
 }
 
-#piwikSettings input.piwik-error {
+#piwikSettings input.piwik-error, #piwikSettings label.piwik-error {
     background-color: #f65c38;
 }

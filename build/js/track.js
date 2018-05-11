@@ -1,5 +1,5 @@
 /*!
- * owncloud_piwik v0.4.0 - 2018-04-16
+ * owncloud_piwik v0.4.1 - 2018-05-11
  * 
  * Copyright (c) 2018 Klaus Herberth <klaus@jsxc.org> <br>
  * Released under the MIT license
@@ -7,7 +7,7 @@
  * Please see https://github.com/sualko/owncloud_piwik
  * 
  * @author Klaus Herberth <klaus@jsxc.org>
- * @version 0.4.0
+ * @version 0.4.1
  * @license MIT
  */
 
@@ -53,7 +53,7 @@ var _paq = _paq || [];
    function track(options) {
       var app = null;
       var path = window.location.pathname;
-      var pathparts = path.match(/index\.php\/apps\/([a-z0-9]+)\/?/i) || path.match(/index\.php\/([a-z0-9]+)(\/([a-z0-9]+))?/i) || [];
+      var pathparts = path.match(/(?:index\.php\/)?apps\/([a-z0-9]+)\/?/i) || path.match(/(?:index\.php\/)?([a-z0-9]+)(\/([a-z0-9]+))?/i) || [];
 
       if (pathparts.length >= 2) {
          app = pathparts[1];
@@ -86,7 +86,7 @@ var _paq = _paq || [];
          _paq.push(['setUserId', OC.currentUser]);
       }
 
-      if (options.trackDir === 'on') {
+      if (options.trackDir === 'on' || options.trackDir === true) {
          // track file browsing
 
          $('#app-content').delegate('>div', 'afterChangeDirectory', function() {
