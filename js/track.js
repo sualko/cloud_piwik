@@ -40,7 +40,7 @@ var _paq = _paq || [];
    function track(options) {
       var app = null;
       var path = window.location.pathname;
-      var pathparts = path.match(/index\.php\/apps\/([a-z0-9]+)\/?/i) || path.match(/index\.php\/([a-z0-9]+)(\/([a-z0-9]+))?/i) || [];
+      var pathparts = path.match(/(?:index\.php\/)?apps\/([a-z0-9]+)\/?/i) || path.match(/(?:index\.php\/)?([a-z0-9]+)(\/([a-z0-9]+))?/i) || [];
 
       if (pathparts.length >= 2) {
          app = pathparts[1];
