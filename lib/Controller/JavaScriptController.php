@@ -40,6 +40,7 @@ class JavaScriptController extends Controller
             'url' => $this->config->getAppValue('url'),
             'siteId' => $this->config->getAppValue('siteId'),
             'trackDir' => $this->config->getBooleanAppValue('trackDir'),
+            'trackUser' => $this->config->getBooleanAppValue('trackUser'),
         ];
 
         $script = "var cloudPiwikOptions = '".json_encode($options)."';";

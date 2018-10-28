@@ -49,7 +49,7 @@ var _paq = _paq || [];
       _paq.push(['setCustomVariable', '1', 'App', app, 'page']);
    }
 
-   if (OC && OC.currentUser) {
+   if (OC && OC.currentUser && options.trackUser) {
       // set user id
       _paq.push(['setUserId', OC.currentUser]);
    }

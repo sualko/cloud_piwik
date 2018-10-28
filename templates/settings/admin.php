@@ -20,7 +20,13 @@ style('piwik', 'settings');
 			<tr>
 				<td colspan="2">
 					<input type="checkbox" name="trackDir" id="piwikTrackDir" class="checkbox" <?php if ($_['trackDir']): ?> checked="checked"<?php endif; ?> />
-					<label for="piwikTrackDir">Track file browsing </label>	
+					<label for="piwikTrackDir">Track file browsing</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="checkbox" name="trackUser" id="piwikTrackUser" class="checkbox" <?php if ($_['trackUser']): ?> checked="checked"<?php endif; ?> />
+					<label for="piwikTrackUser">Track user id</label>
 				</td>
 			</tr>
 		</table>

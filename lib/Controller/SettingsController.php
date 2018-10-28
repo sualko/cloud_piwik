@@ -37,7 +37,7 @@ class SettingsController extends Controller
 
     public function update($key)
     {
-        if (!in_array($key, ['url', 'siteId', 'trackDir'])) {
+        if (!in_array($key, ['url', 'siteId', 'trackDir', 'trackUser'])) {
             return [
                 'result' => 'error',
                 'message' => 'Tried to update not allowed param.',
