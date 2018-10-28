@@ -2,8 +2,8 @@
 namespace OCA\Piwik\Controller;
 
 use OCP\AppFramework\Controller;
-use OCP\IConfig;
 use OCP\IRequest;
+use OCA\Piwik\Config;
 
 class SettingsController extends Controller
 {
@@ -12,7 +12,7 @@ class SettingsController extends Controller
     public function __construct(
         $appName,
         IRequest $request,
-        IConfig $config
+        Config $config
     ) {
         parent::__construct($appName, $request);
 
@@ -28,10 +28,9 @@ class SettingsController extends Controller
         return [
             'result' => 'success',
             'data' => [
-                'url' => $this->getAppValue('url'),
-                'siteId' => $this->getAppValue('siteId'),
-                'trackDir' => $this->getBooleanAppValue('trackDir'),
-                'validity' => 2*60,
+                'url' => $this->config->getAppValue('url'),
+                'siteId' => $this->config->getAppValue('siteId'),
+                'trackDir' => $this->config->getBooleanAppValue('trackDir')
             ],
         ];
     }
@@ -45,33 +44,12 @@ class SettingsController extends Controller
             ];
         }
 
-        $this->setAppValue($key, $this->getTrimParam('value'));
+        $this->config->setAppValue($key, $this->getTrimParam('value'));
 
         return [
             'status' => 'success',
         ];
     }
-
-    private function getAppValue($key, $default = null)
-    {
-        $value = $this->config->getAppValue($this->appName, $key, $default);
-        return (empty($value)) ? $default : $value;
-    }
-
-    private function setAppValue($key, $value)
-    {
-        return $this->config->setAppValue($this->appName, $key, $value);
-    }
-
-    private function getBooleanAppValue($key)
-    {
-        return $this->validateBoolean($this->getAppValue($key));
-    }
-
-    private function validateBoolean($val)
-	{
-		return $val === true || $val === 'true';
-	}
 
     private function getTrimParam($key)
     {

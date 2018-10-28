@@ -1,6 +1,7 @@
 <?php
 namespace OCA\Piwik\AppInfo;
 
+use OCA\Piwik\Config;
 use OCA\Piwik\Controller\SettingsController;
 use OCA\Piwik\Migration\Settings as SettingsMigration;
 use OCP\AppFramework\App;
@@ -15,6 +16,13 @@ class Application extends App
 
         $container = $this->getContainer();
 
+        $container->registerService('OCA\Piwik\Config', function (IContainer $c) {
+            return new Config(
+                $c->query('AppName'),
+                $c->query('OCP\IConfig')
+            );
+        });
+
         /**
          * Controllers
          */
@@ -22,7 +30,7 @@ class Application extends App
             return new SettingsController(
                 $c->query('AppName'),
                 $c->query('Request'),
-                $c->query('OCP\IConfig')
+                $c->query('OCA\Piwik\Config')
             );
         });
 
