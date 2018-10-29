@@ -1,4 +1,7 @@
 # Piwik/Matomo for your Cloud
+![GitHub All Releases](https://img.shields.io/github/downloads/sualko/cloud_piwik/total.svg)
+[![GitHub license](https://img.shields.io/github/license/sualko/cloud_piwik.svg)](https://github.com/sualko/cloud_piwik/blob/master/LICENSE)
+
 Track [Nextcloud](https://nextcloud.com) users with [Piwik/Matomo](https://matomo.org).
 
 ## Requirements
