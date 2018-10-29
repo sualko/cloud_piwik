@@ -30,6 +30,7 @@ class Admin implements ISettings
             'url' => $this->config->getAppValue('piwik', 'url'),
             'siteId' => $this->config->getAppValue('piwik', 'siteId'),
             'trackDir' => $this->config->getAppValue('piwik', 'trackDir'),
+            'trackUser' => $this->config->getAppValue('piwik', 'trackUser'),
         ];
 
         return new TemplateResponse('piwik', 'settings/admin', $parameters);

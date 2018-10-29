@@ -1,10 +1,10 @@
 {
-  "name": "owncloud_piwik",
-  "version": "0.4.1",
+  "name": "cloud_piwik",
+  "version": "0.5.0",
   "description": "Track owncloud/nextcloud users with piwik",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sualko/owncloud_piwik.git"
+    "url": "https://github.com/sualko/cloud_piwik.git"
   },
   "keywords": [
     "nextcloud",
@@ -15,9 +15,9 @@
   "author": "Klaus Herberth <klaus@jsxc.org>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sualko/owncloud_piwik/issues"
+    "url": "https://github.com/sualko/cloud_piwik/issues"
   },
-  "homepage": "https://github.com/sualko/owncloud_piwik",
+  "homepage": "https://github.com/sualko/cloud_piwik",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-banner": "^0.6.0",

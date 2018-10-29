@@ -1,4 +1,4 @@
-/* global OC, oc_debug */
+/* global OC */
 
 var _paq = _paq || [];
 

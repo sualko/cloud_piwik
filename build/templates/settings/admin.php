@@ -6,7 +6,6 @@ style('piwik', 'settings');
 <div id="piwikSettings" class="section">
 	<h2>Piwik/Matomo Tracking</h2>
 	<p class="settings-hint">If you have no Piwik/Matomo instance, go to <a href="https://matomo.org" target="_blank">matomo.org</a> for further instructions.</p>
-	<p class="settings-hint">Please take into account that the old values are cached for 2 minutes in your browser.</p>
 
 	<form>
 		<table>
@@ -21,7 +20,13 @@ style('piwik', 'settings');
 			<tr>
 				<td colspan="2">
 					<input type="checkbox" name="trackDir" id="piwikTrackDir" class="checkbox" <?php if ($_['trackDir']): ?> checked="checked"<?php endif; ?> />
-					<label for="piwikTrackDir">Track file browsing </label>	
+					<label for="piwikTrackDir">Track file browsing</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="checkbox" name="trackUser" id="piwikTrackUser" class="checkbox" <?php if ($_['trackUser']): ?> checked="checked"<?php endif; ?> />
+					<label for="piwikTrackUser">Track user id</label>
 				</td>
 			</tr>
 		</table>

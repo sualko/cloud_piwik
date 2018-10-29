@@ -69,7 +69,6 @@ module.exports = function(grunt) {
             },
             files: {
                'build/js/settings/admin.min.js': ['js/settings/admin.js'],
-               'build/js/track.min.js': ['js/track.js']
             }
          }
       },
