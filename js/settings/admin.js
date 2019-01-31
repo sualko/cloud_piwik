@@ -1,6 +1,8 @@
 /* global OCP, OC */
 
 $(function() {
+   $('#piwikAdblockerWarning').hide();
+
    function showRequestResult(element, result) {
       if (element.attr('type') === 'checkbox') {
          element = $('label[for="' + element.attr('id') + '"]');
