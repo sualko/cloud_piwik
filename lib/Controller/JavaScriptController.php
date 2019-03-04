@@ -47,6 +47,6 @@ class JavaScriptController extends Controller
         $script = file_get_contents(__DIR__ . '/../../js/track.js');
         $script = str_replace('%OPTIONS%', json_encode($options), $script);
 
-        return new DataDownloadResponse($script, 'script', 'text/javascript');
+        return new DataDownloadResponse($script, 'tracking.js', 'text/javascript');
     }
 }
