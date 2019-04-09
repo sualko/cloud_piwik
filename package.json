@@ -1,15 +1,15 @@
 {
   "name": "cloud_piwik",
   "version": "0.5.1",
-  "description": "Track owncloud/nextcloud users with piwik",
+  "description": "Track Nextcloud users with piwik/matomo",
   "repository": {
     "type": "git",
     "url": "https://github.com/sualko/cloud_piwik.git"
   },
   "keywords": [
     "nextcloud",
-    "owncloud",
     "piwik",
+    "matomo",
     "tracking"
   ],
   "author": "Klaus Herberth <klaus@jsxc.org>",

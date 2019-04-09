@@ -11,7 +11,7 @@ Track [Nextcloud](https://nextcloud.com) users with [Piwik/Matomo](https://matom
 
 ## What will be tracked?
 - Normal Piwik/Matomo stuff (url, page title, browser, ...)
-- User ID aka Owncloud user
+- User ID aka Nextcloud user
 - App in first custom variable
 - Share ID in second custom variable (<code>index.php/s/SHARE_ID</code>)
 - Share ID + folder or file name in third custom variable
