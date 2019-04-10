@@ -1,0 +1,8 @@
+title: Piwik 4 Owncloud
+description: Track Owncloud users with Piwik Web Analytics
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
