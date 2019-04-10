@@ -1,24 +1,29 @@
-# owncloud_piwik
-Track [Owncloud](https://owncloud.org) users with [Piwik Web Analytics](https://piwik.org).
+# Piwik/Matomo for your Cloud
+
+Track [Nextcloud](https://nextcloud.com) users with [Piwik/Matomo](https://matomo.org).
 
 ## Requirements
-- Owncloud >= 8
-- Working piwik installation (tested with 2.14.3)
-- Empty custom variable slots on index 1 and 2
+- Nextcloud >= 11
+- Working Piwik/Matomo installation (tested with 2.14.3)
+- Empty custom variable slots on index 1, 2 and 3
 
 ## What will be tracked?
-- Normal piwik stuff (url, page title, browser, ...)
-- User ID aka Owncloud user
+- Normal Piwik/Matomo stuff (url, page title, browser, ...)
+- User ID aka Nextcloud user
 - App in first custom variable
 - Share ID in second custom variable (<code>index.php/s/SHARE_ID</code>)
+- Share ID + folder or file name in third custom variable
 
 ## What will not be tracked?
 - Download
 - Outlink
-- File directory
 
 ## Installation
-- Download and extract to <code>OWNCLOUD_DIR/apps/piwik/</code>
+- Download and extract to <code>CLOUD_DIR/apps/piwik/</code>
 - Enable app
-- If needed create a new site in your piwik installation
-- Insert piwik site id and url on the owncloud admin page (e.g. site id: <code>1</code>, url: <code>//domain.tld/piwik/</code>)
+- If needed create a new site in your Piwik/Matomo installation
+- Insert Piwik/Matomo site id and url on the cloud admin page (e.g. site id: <code>1</code>, url: <code>//domain.tld/piwik/</code>)
+- If Piwik/Matomo is hosted under a different domain as your cloud you maybe need to use one of two possible proxy methods:
+  - Add <code>RewriteRule "^piwik/(.*)$" "http://piwik.tld/$1" [P]</code> to your <code>.htaccess</code>
+  - `a2enmod proxy` and add <code>ProxyPass /piwik/ http://piwik.tld/</code> to your apache VirtualHost section
+ 
