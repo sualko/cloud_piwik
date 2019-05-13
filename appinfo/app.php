@@ -11,7 +11,7 @@ if (!empty($url)) {
     );
 
     $parseurl = parse_url($url);
-    $url = $parseurl['host'];
+    $url = (isset($parseurl['host'])) ? $parseurl['host'] : false;
     if (isset($parseurl['port'])) {
       $url .= ':' . (string) $parseurl['port'];
     }
