@@ -12,10 +12,10 @@ if (!empty($url)) {
 
     $parseurl = parse_url($url);
     $url = isset($parseurl['host']) ? $parseurl['host'] : gethostname();
-    $url .= isset($parseurl['path']) ? $parseurl['path'] : '';
     if (isset($parseurl['port'])) {
       $url .= ':' . (string) $parseurl['port'];
     }
+    $url .= isset($parseurl['path']) ? $parseurl['path'] : '';
     $policy = new OCP\AppFramework\Http\ContentSecurityPolicy();
 
     if ($url !== false && array_key_exists('HTTP_HOST', $_SERVER)
