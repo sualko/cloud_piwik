@@ -15,7 +15,7 @@ if (!empty($url)) {
     if (isset($parseurl['port'])) {
       $url .= ':' . (string) $parseurl['port'];
     }
-    $url .= isset($parseurl['path']) ? $parseurl['path'] : '';
+    $url .= '/';
     $policy = new OCP\AppFramework\Http\ContentSecurityPolicy();
 
     if ($url !== false && array_key_exists('HTTP_HOST', $_SERVER)
