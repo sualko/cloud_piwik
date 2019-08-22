@@ -10,18 +10,24 @@ if (!empty($url)) {
         ], ''
     );
 
+    $allowedUrl = ' \'self\' ';
     $parseurl = parse_url($url);
-    $url = $parseurl['host'];
-    if (isset($parseurl['port'])) {
-      $url .= ':' . (string) $parseurl['port'];
+
+    $isHostDifferent = isset($parseurl['host']) && array_key_exists('SERVER_NAME', $_SERVER) && $_SERVER['SERVER_NAME'] !== $parseurl['host'];
+    $isPortDifferent = isset($parseurl['port']) && array_key_exists('SERVER_PORT', $_SERVER) && $_SERVER['SERVER_PORT'] !== $parseurl['port'];
+
+    if ($isHostDifferent || $isPortDifferent) {
+        $allowedUrl = $parseurl['host'];
+
+        if (isset($parseurl['port'])) {
+            $allowedUrl .= ':' . (string) $parseurl['port'];
+        }
     }
+
     $policy = new OCP\AppFramework\Http\ContentSecurityPolicy();
 
-    if ($url !== false && array_key_exists('HTTP_HOST', $_SERVER)
-        && $_SERVER['HTTP_HOST'] !== $url && !empty($url)) {
-        $policy->addAllowedScriptDomain($url);
-        $policy->addAllowedImageDomain($url);
+    $policy->addAllowedScriptDomain($allowedUrl);
+    $policy->addAllowedImageDomain($allowedUrl);
 
-        \OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy);
-    }
+    \OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy);
 }
