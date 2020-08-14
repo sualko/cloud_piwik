@@ -87,11 +87,17 @@ module.exports = function(grunt) {
          }
       },
       exec: {
-         signRelease: {
+         createNextcloudSignature: {
             command: 'openssl dgst -sha512 -sign ' +
                '~/.nextcloud/certificates/piwik.key ' +
                'archives/cloud_piwik-<%= meta.app.version %>.tar.gz | openssl base64 > ' +
                'archives/cloud_piwik-<%= meta.app.version %>.tar.gz.ncsig'
+         },
+         createGPGSignature: {
+            command: 'gpg --yes --detach-sign "archives/cloud_piwik-<%= meta.app.version %>.tar.gz"'
+         },
+         createGPGArmorSignature: {
+            command: 'gpg --yes --detach-sign --armor "archives/cloud_piwik-<%= meta.app.version %>.tar.gz"'
          }
       }
    });
@@ -111,5 +117,5 @@ module.exports = function(grunt) {
    grunt.registerTask('build', ['jshint', 'jsbeautifier', 'clean', 'copy', 'usebanner']);
    grunt.registerTask('build:release', ['build', 'replace', 'uglify', 'compress']);
 
-   grunt.registerTask('sign:release', ['exec:signRelease']);
+   grunt.registerTask('sign:release', ['exec:createNextcloudSignature', 'exec:createGPGSignature', 'exec:createGPGArmorSignature']);
 };
