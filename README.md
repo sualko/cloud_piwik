@@ -5,7 +5,7 @@
 Track [Nextcloud](https://nextcloud.com) users with [Piwik/Matomo](https://matomo.org).
 
 ## Requirements
-- Nextcloud >= 11
+- Nextcloud >= 17
 - Working Piwik/Matomo installation (tested with 2.14.3)
 - Empty custom variable slots on index 1, 2 and 3
 
