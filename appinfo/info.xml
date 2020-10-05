@@ -4,7 +4,7 @@
 	<name>Piwik/Matomo Tracking</name>
 	<summary>Track users with Piwik/Matomo</summary>
 	<description>Track users with Piwik/Matomo</description>
-	<version>0.6.0</version>
+	<version>0.7.0</version>
 	<licence>agpl</licence>
 	<author>Klaus Herberth</author>
 	<category>tools</category>
