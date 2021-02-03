@@ -28,6 +28,7 @@ if (!empty($url)) {
 
     $policy->addAllowedScriptDomain($allowedUrl);
     $policy->addAllowedImageDomain($allowedUrl);
+    $policy->addAllowedConnectDomain($allowedUrl);
 
     \OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy);
 }
