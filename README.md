@@ -29,3 +29,9 @@ Track [Nextcloud](https://nextcloud.com) users with [Piwik/Matomo](https://matom
  - Add <code>RewriteRule "^piwik/(.*)$" "http://piwik.tld/$1" [P]</code> to your <code>.htaccess</code>
  - a2enmod proxy
  - Add <code>ProxyPass /piwik/ http://piwik.tld/</code> to your apache VirtualHost section
+
+## Publishing a new version
+1. bump version in `package.json`
+2. `yarn release:build`
+3. `yarn release:sign`
+4. `yarn release:publish`
