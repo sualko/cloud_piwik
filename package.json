@@ -40,6 +40,6 @@
     "grunt-jsbeautifier": "^0.2.13",
     "grunt-text-replace": "^0.4.0",
     "inquirer": "^7.3.3",
-    "simple-git": "^2.17.0"
+    "simple-git": "^3.3.0"
   }
 }
