@@ -1,0 +1,33 @@
+{
+    "name": "sualko/matomo",
+    "description": "Track Nextcloud users with piwik/matomo",
+    "type": "project",
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "Klaus Herberth",
+            "email": "klaus@jsxc.org"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3",
+        "nextcloud/coding-standard": "^1.0.0",
+        "phpstan/phpstan": "^0.12.29",
+        "nextcloud/ocp": "^23.0 || ^24.0 || ^25.0",
+        "vimeo/psalm": "^4.5"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "classmap-authoritative": true
+    },
+    "scripts": {
+        "cs:check": "php-cs-fixer fix --dry-run --diff",
+        "cs:fix": "php-cs-fixer fix",
+        "lint": "find . -name \\*.php -not -path './vendor/*' -exec php -l \"{}\" \\;",
+        "psalm": "psalm --threads=1",
+        "psalm:clear": "psalm --clear-cache && psalm --clear-global-cache",
+        "psalm:fix": "psalm --alter --issues=InvalidReturnType,InvalidNullableReturnType,MissingParamType,InvalidFalsableReturnType"
+    }
+}

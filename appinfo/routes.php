@@ -7,4 +7,3 @@ return [
 		['name' => 'JavaScript#tracking', 'url' => '/js/tracking', 'verb' => 'GET']
 	],
 ];
-?>
