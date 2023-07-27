@@ -1,13 +1,13 @@
 /*!
- * cloud_piwik v0.11.1 - 2022-11-27
+ * cloud_piwik v0.12.0 - 2023-07-27
  * 
- * Copyright (c) 2022 Klaus Herberth <klaus@jsxc.org> <br>
+ * Copyright (c) 2023 Klaus Herberth <klaus@jsxc.org> <br>
  * Released under the MIT license
  * 
  * Please see https://github.com/sualko/cloud_piwik
  * 
  * @author Klaus Herberth <klaus@jsxc.org>
- * @version 0.11.1
+ * @version 0.12.0
  * @license MIT
  */
 
