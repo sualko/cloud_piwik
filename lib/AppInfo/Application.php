@@ -4,12 +4,12 @@ namespace OCA\Piwik\AppInfo;
 
 use OC\Security\CSP\ContentSecurityPolicyManager;
 use OC\Security\CSP\ContentSecurityPolicyNonceManager;
+use OCA\Piwik\Config;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
-use OCP\IConfig;
 use OCP\IURLGenerator;
 use OCP\Util;
 
@@ -38,8 +38,8 @@ class Application extends App implements IBootstrap {
 		);
 	}
 
-	public function addContentSecurityPolicy(IConfig $config, ContentSecurityPolicyManager $policyManager): void {
-		$url = $config->getAppValue('piwik', 'url');
+	public function addContentSecurityPolicy(Config $config, ContentSecurityPolicyManager $policyManager): void {
+		$url = $config->getAppValue('url');
 		$allowedUrl = ' \'self\' ';
 		$parseUrl = parse_url($url);
 

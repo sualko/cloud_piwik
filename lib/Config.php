@@ -2,28 +2,34 @@
 
 namespace OCA\Piwik;
 
-use OCP\IConfig;
+use OCA\Piwik\AppInfo\Application;
+use OCP\IAppConfig;
 
 class Config {
-	public function __construct($appName, IConfig $config) {
-		$this->appName = $appName;
+	private IAppConfig $config;
+
+	public function __construct(IAppConfig $config) {
 		$this->config = $config;
 	}
 
-	public function getAppValue($key, $default = null) {
-		$value = $this->config->getAppValue($this->appName, $key, $default);
+	public function getAppValue(string $key, $default = null) {
+		$value = $this->config->getValueString(Application::ID, $key, $default ?? '');
 		return (empty($value)) ? $default : $value;
 	}
 
-	public function setAppValue($key, $value) {
-		return $this->config->setAppValue($this->appName, $key, $value);
+	public function setAppValue(string $key, string $value) {
+		return $this->config->setValueString(Application::ID, $key, $value);
 	}
 
-	public function getBooleanAppValue($key) {
+	public function getBooleanAppValue(string $key) {
 		return $this->validateBoolean($this->getAppValue($key));
 	}
 
-	private function validateBoolean($val) {
+	private function validateBoolean(mixed $val) {
 		return $val === true || $val === 'true';
+	}
+
+	public function deleteAppValue(string $key) {
+		return $this->config->deleteKey(Application::ID, $key);
 	}
 }

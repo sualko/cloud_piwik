@@ -6,25 +6,21 @@ use OCA\Piwik\Config;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\Response;
-use OCP\IConfig;
 use OCP\IRequest;
 
 class JavaScriptController extends Controller {
-	/** @var \OCP\IConfig */
-	protected $config;
 
 	/**
 	 * constructor of the controller
 	 *
 	 * @param string $appName
 	 * @param IRequest $request
-	 * @param IConfig $config
+	 * @param Config $config
 	 */
 	public function __construct($appName,
 		IRequest $request,
-		Config $config) {
+		private Config $config) {
 		parent::__construct($appName, $request);
-		$this->config = $config;
 	}
 
 	/**

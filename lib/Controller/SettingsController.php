@@ -7,16 +7,13 @@ use OCP\AppFramework\Controller;
 use OCP\IRequest;
 
 class SettingsController extends Controller {
-	private $config;
 
 	public function __construct(
 		$appName,
 		IRequest $request,
-		Config $config
+		private Config $config
 	) {
 		parent::__construct($appName, $request);
-
-		$this->config = $config;
 	}
 
 	/**
